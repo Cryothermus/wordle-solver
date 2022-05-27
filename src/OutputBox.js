@@ -4,7 +4,7 @@ class OutputBox extends React.Component {
 
     render() {
         return (
-            <textarea id="OutputArea" readonly></textarea>
+            <textarea id="OutputArea" readOnly></textarea>
         );
     }
 
