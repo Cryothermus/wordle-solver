@@ -15,29 +15,52 @@ class InputBox extends React.Component {
 
   /*
   TODO:
-  Make onChangeBad() & onChangeMissed() accept one character each, don't allow shared chars
-  Finish onChangeRight()
   Write code for submit button
   */
 
+
+  /*
+  Some explanation for onChangeBad & on ChangeMissed:
+  The following two methods are intended to keep the InputBox's state updated,
+  but they're also written to heavily limit possible user input.
+  Inputs are all uppercase, only allow alphabetical characters, and no duplicate inputs are allowed-
+  even between the two boxes.
+  */
   onChangeBad = (event) => {
     let badChars = event.target.value;
     badChars = badChars.toUpperCase();
     badChars = badChars.replace(/[^A-Z]/, '');
-    event.target.value = badChars;
 
-    this.setState({badChars: event.target.value});
+    let newChar = badChars.slice(-1);
+    if (event.target.value.length > this.state.badChars.length &&
+      (this.state.badChars.includes(newChar) || this.state.missedChars.includes(newChar))) {
+      event.target.value = this.state.badChars;
+    }
+    else {
+      event.target.value = badChars;
+      this.setState({badChars: event.target.value});
+    }
   }
 
   onChangeMissed= (event) => {
     let missedChars = event.target.value;
     missedChars = missedChars.toUpperCase();
     missedChars = missedChars.replace(/[^A-Z]/, '');
-    event.target.value = missedChars;
+    
+    let newChar = missedChars.slice(-1);
+    if (event.target.value.length > this.state.missedChars.length && 
+      (this.state.badChars.includes(newChar) || this.state.missedChars.includes(newChar))) {
+      event.target.value = this.state.missedChars;
+    }
+    else {
+      event.target.value = missedChars;
+      this.setState({missedChars: event.target.value});
+    }
 
-    this.setState({missedChars: event.target.value});
   }
 
+  //The "right" characters, of course, are already set in stone and exempt from the rules
+  //of the above two boxes. This will take into account the possibility of duplicate characters.
   onChangeRight(event, num) {
     let rightChar = event.target.value;
     rightChar = rightChar.toUpperCase();
