@@ -6,11 +6,11 @@ class InputBox extends React.Component {
   constructor(props) {
     super(props);
     trueChars = ['', '', '', '', ''];
-    this.state = {
-      badChars: "",
-      missedChars: "",
-      rightChars: Array(5).fill(""),
-    };
+    // this.state = {
+    //   badChars: "",
+    //   missedChars: "",
+    //   rightChars: Array(5).fill(""),
+    // };
   }
 
   /*
@@ -32,13 +32,14 @@ class InputBox extends React.Component {
     badChars = badChars.replace(/[^A-Z]/, '');
 
     let newChar = badChars.slice(-1);
-    if (event.target.value.length > this.state.badChars.length &&
-      (this.state.badChars.includes(newChar) || this.state.missedChars.includes(newChar))) {
-      event.target.value = this.state.badChars;
+    if (event.target.value.length > this.props.badChars.length &&
+      (this.props.badChars.includes(newChar) || this.props.missedChars.includes(newChar))) {
+      event.target.value = this.props.badChars;
     }
     else {
       event.target.value = badChars;
-      this.setState({badChars: event.target.value});
+      this.props.onBadChange(event.target.value)
+      //this.setState({badChars: event.target.value});
     }
   }
 
@@ -48,13 +49,14 @@ class InputBox extends React.Component {
     missedChars = missedChars.replace(/[^A-Z]/, '');
     
     let newChar = missedChars.slice(-1);
-    if (event.target.value.length > this.state.missedChars.length && 
-      (this.state.badChars.includes(newChar) || this.state.missedChars.includes(newChar))) {
-      event.target.value = this.state.missedChars;
+    if (event.target.value.length > this.props.missedChars.length && 
+      (this.props.badChars.includes(newChar) || this.props.missedChars.includes(newChar))) {
+      event.target.value = this.props.missedChars;
     }
     else {
       event.target.value = missedChars;
-      this.setState({missedChars: event.target.value});
+      this.props.onMissedChange(event.target.value)
+      //this.setState({missedChars: event.target.value});
     }
 
   }
@@ -68,7 +70,8 @@ class InputBox extends React.Component {
     event.target.value = rightChar;
     
     trueChars[num] = event.target.value;
-    this.setState({rightChars: trueChars});
+    this.props.onRightChange(trueChars);
+    //this.setState({rightChars: trueChars});
 
   }
   
@@ -100,7 +103,8 @@ class InputBox extends React.Component {
         onChange={event => this.onChangeRight(event, 4)}></input>
       </div>
 
-      <button>Search words...</button>
+      <button
+      onClick={this.props.onSearch}>Search words...</button>
     </div>
     );
   }
