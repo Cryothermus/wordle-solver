@@ -86,7 +86,7 @@ class InputBox extends React.Component {
 
       <div id="missedCharInput"> 
         <label htmlFor="missedChar">Letters <i>misplaced</i> in the solution:</label>
-        <input type="text" id="missedChar" name="missedChar" onChange={this.onChangeMissed}></input>
+        <input type="text" id="missedChar" maxLength={5} name="missedChar" onChange={this.onChangeMissed}></input>
       </div>
       
       <div id="rightCharInput"> 

@@ -14,6 +14,7 @@ class App extends React.Component{
     }
   }
 
+
   setBadChars = (chars) => {
     this.setState({badChars: chars})
   }
@@ -27,8 +28,38 @@ class App extends React.Component{
   }
 
   searchWords= () => {
-    console.log(`${this.state.badChars},${this.state.missedChars},${this.state.rightChars}`)
+    
+    console.log(this.buildMaskRegex());
+    console.log(this.buildSearchRegex());
+
   }
+
+
+  buildMaskRegex = () => {
+    var maskRegex = "";
+    for (var i = 0; i < this.state.rightChars.length; i++) {
+      if (this.state.rightChars[i] === "") {
+        maskRegex += `[^${this.state.badChars}]`;
+      }
+      else {
+        maskRegex += this.state.rightChars[i];
+      }
+    }
+
+    return maskRegex;
+  }
+
+  buildSearchRegex = () => {
+    var searchRegex = ".*";
+    for (var i = 0; i < this.state.missedChars.length; i++) {
+      searchRegex += `(?=.*${this.state.missedChars.charAt(i)})`;
+    }
+    searchRegex += (".*");
+
+    return searchRegex;
+
+  }
+
 
 
   render() {
