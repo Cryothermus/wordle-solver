@@ -12,6 +12,8 @@ class App extends React.Component{
       missedChars: "",
       rightChars: Array(5).fill(""),
     }
+
+    var wordResults = [];
   }
 
 
@@ -29,8 +31,20 @@ class App extends React.Component{
 
   searchWords= () => {
     
-    console.log(this.buildMaskRegex());
-    console.log(this.buildSearchRegex());
+    //console.log(this.buildSearchRegex());
+    let maskRegex = new RegExp(this.buildMaskRegex());
+    let searchRegex = new RegExp(this.buildSearchRegex());
+    let validWords = [];
+
+    for (var word of wordList.words) {
+      if (maskRegex.test(word) && searchRegex.test(word)) {
+        validWords.push(word);
+      }
+    }
+
+    console.log(validWords);
+
+
 
   }
 
@@ -39,10 +53,10 @@ class App extends React.Component{
     var maskRegex = "";
     for (var i = 0; i < this.state.rightChars.length; i++) {
       if (this.state.rightChars[i] === "") {
-        maskRegex += `[^${this.state.badChars}]`;
+        maskRegex = maskRegex.concat(`[^${this.state.badChars}]`);
       }
       else {
-        maskRegex += this.state.rightChars[i];
+        maskRegex =  maskRegex.concat(this.state.rightChars[i]);
       }
     }
 
@@ -50,11 +64,12 @@ class App extends React.Component{
   }
 
   buildSearchRegex = () => {
+    //TODO: Make this ignore rightChars
     var searchRegex = ".*";
     for (var i = 0; i < this.state.missedChars.length; i++) {
-      searchRegex += `(?=.*${this.state.missedChars.charAt(i)})`;
+      searchRegex = searchRegex.concat(`(?=.*${this.state.missedChars.charAt(i)})`);
     }
-    searchRegex += (".*");
+    searchRegex = searchRegex.concat(".*");
 
     return searchRegex;
 
