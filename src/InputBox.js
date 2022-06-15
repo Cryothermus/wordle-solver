@@ -14,12 +14,6 @@ class InputBox extends React.Component {
   }
 
   /*
-  TODO:
-  Write code for submit button
-  */
-
-
-  /*
   Some explanation for onChangeBad & on ChangeMissed:
   The following two methods are intended to keep the InputBox's state updated,
   but they're also written to heavily limit possible user input.

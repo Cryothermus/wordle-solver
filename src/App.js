@@ -11,6 +11,7 @@ class App extends React.Component{
       badChars: "",
       missedChars: "",
       rightChars: Array(5).fill(""),
+      resultList: "",
     }
 
     var wordResults = [];
@@ -49,6 +50,12 @@ class App extends React.Component{
 
     console.log(validWords);
 
+    let resString = "";
+    for (var word of validWords) {
+      resString = resString.concat(`${word}\n`);
+    }
+    this.setState({resultList: resString});
+
 
 
   }
@@ -82,7 +89,6 @@ class App extends React.Component{
 
   buildExcludeRegex = () => {
     let exRegex = "";
-    //if (this.state.missedChars === "") return exRegex;
     for (var i = 0; i < this.state.rightChars.length; i++) {
       if (this.state.rightChars[i] === "") {
         exRegex = exRegex.concat(`[^${this.state.missedChars}]`);
@@ -110,7 +116,8 @@ class App extends React.Component{
         onRightChange={this.setRightChars}
         onSearch={this.searchWords}
         ></InputBox>
-        <OutputBox></OutputBox>
+        <OutputBox
+        resultList={this.state.resultList}></OutputBox>
       </div>
     );
   }
