@@ -1,5 +1,5 @@
 //import logo from './logo.svg';
-import './test.css';
+import './App.css';
 import InputBox from './InputBox.js'
 import OutputBox from './OutputBox.js'
 import wordList from './valid-words.json';
