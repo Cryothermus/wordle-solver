@@ -1,5 +1,6 @@
 import React from "react";
 import './App.css';
+import {TextField} from '@mui/material';
 
 class OutputBox extends React.Component {
     constructor(props) {
@@ -8,7 +9,14 @@ class OutputBox extends React.Component {
 
     render() {
         return (
-            <textarea id="OutputArea" value={this.props.resultList} readOnly></textarea>
+            <div className="OutputBox">
+                <TextField className="OutputArea" value={this.props.resultList} readOnly 
+                multiline 
+                minRows={3}
+                maxRows={10}>
+                </TextField>
+                <br/>
+            </div>
         );
     }
 

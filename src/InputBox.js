@@ -4,6 +4,15 @@ import {TextField, Grid, InputLabel, Button} from '@mui/material';
 
 var trueChars;
 
+//because CSS doesn't work with everything, apparently
+const styles = {
+  inputLabelStyle: {
+    color: "black"
+  }
+
+
+}
+
 class InputBox extends React.Component {
   constructor(props) {
     super(props);
@@ -76,73 +85,71 @@ class InputBox extends React.Component {
       <div className="InputBox">
 
       <div id="badCharInput" className="inputField"> 
-        <InputLabel className="CharLabel">Letters <i>not</i> in the solution:</InputLabel>
+        <InputLabel className="CharLabel" margin="dense">Letters <i>not</i> in the solution:</InputLabel>
         <br/>
         <TextField size="small" variant="filled" hiddenLabel id="badChar"  name="badChar" 
-        onChange={this.onChangeBad}>
+        onChange={this.onChangeBad} color="error">
         </TextField>
       </div>
 
       <div id="missedCharInput" className="inputField"> 
-        <InputLabel className="CharLabel">Letters <i>misplaced</i> in the solution:</InputLabel>
+        <InputLabel className="CharLabel" margin="dense">Letters <i>misplaced</i> in the solution:</InputLabel>
         <br/>
         <TextField size="small" variant="filled" hiddenLabel id="missedChar" maxLength={5} name="missedChar"
-         onChange={this.onChangeMissed}>
+         onChange={this.onChangeMissed} color="warning">
 
         </TextField>
       </div>
       
       <div id="rightCharInput" className="inputField"> 
-        <InputLabel className="CharLabel">Correct letters in the solution:</InputLabel>
+        <InputLabel className="CharLabel" margin="dense">Correct letters in the solution:</InputLabel>
         <br/>
         
         <Grid container className="rightCharGrid" spacing={1}>
 
           <Grid item>
           <TextField id="rightChar1" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 0)}>
+        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 0)}
+        color="success">
         </TextField>
           </Grid>
 
           <Grid item>
           <TextField id="rightChar2" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 1)}>
+        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 1)}
+        color="success">
         </TextField>
           </Grid>
 
           <Grid item>
           <TextField id="rightChar3" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 2)}></TextField>
+        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 2)}
+        color="success"></TextField>
           </Grid>
 
           <Grid item>
           <TextField id="rightChar4" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 3)}></TextField>
+        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 3)}
+        color="success"></TextField>
           </Grid>
 
           <Grid item>
           <TextField id="rightChar5" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 4)}></TextField>
+        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 4)} 
+        color="success"></TextField>
           </Grid>
         </Grid>
 
-        {/* <TextField id="rightChar1" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="standard" size="small" onChange={event => this.onChangeRight(event, 0)}></TextField>
-        <TextField id="rightChar2" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="standard" size="small" onChange={event => this.onChangeRight(event, 1)}></TextField>
-        <TextField id="rightChar3" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="standard" size="small" onChange={event => this.onChangeRight(event, 2)}></TextField>
-        <TextField id="rightChar4" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="standard" size="small" onChange={event => this.onChangeRight(event, 3)}></TextField>
-        <TextField id="rightChar5" className="rightChar" inputProps={{maxLength: 1}} 
-        variant="standard" size="small" onChange={event => this.onChangeRight(event, 4)}></TextField> */}
+    
 
         
       </div>
       <br/>
 
-      <Button variant="contained" className="SearchButton"
-      onClick={this.props.onSearch}>Search words...</Button>
+      <Button variant="contained" 
+      className="SearchButton"
+      onClick={this.props.onSearch}
+      color="primary">Search words...</Button>
     </div>
     );
   }
