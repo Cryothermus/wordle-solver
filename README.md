@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+This was an idea I had a couple months ago- back when I still had classes- but never really had the time to realize until recently.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Remember [Wordle](https://www.nytimes.com/games/wordle/index.html), the uber-popular word game the blew up a while back and eventually got bought out by the New York Times? This is an app I made to "help with" (completely trivialize) it.
 
-## Available Scripts
+You can access it at http://Cryothermus.github.io/wordle-solver
 
-In the project directory, you can run:
+It should hopefully be fairly straightforward to use- just type in the characters you have correct, the ones you have misplaced, and the ones that aren't in the answer, and you'll get a list of all possible answers that meet that criteria.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Search all possible Wordle answers based on the positioning and presence (or lack thereof) of different letters.
+- Typo-proof text boxes- each letter can only appear once in either the "misplaced" or "wrong" text boxes, to prevent impossible inputs.
+- ...That's kinda it, to be honest. Not sure what else you could want without making the UI a total circus.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Why did you make this?
 
-### `npm test`
+A reasonable question, since there are *many* similar tools already available online.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I mostly made this because I graduated back in May 2022 and didn't have a job lined up by then, so I started working on this to sharpen up my (admittedly fairly rusty) React skills and prevent my brain from turning to mush. Also, pretty much everyone is out of town and it's too hot to go outside, which means this project was more or less the only thing I had going on in my life for the past month or so.
 
-### `npm run build`
+## Credits
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Made using ReactJS 18.1.0 and Material UI 5.8.4.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Also credits to Josh Wardle (Wordle creator) and the New York Times (current Wordle owner) for being the whole reason this thing exists.
