@@ -3,7 +3,7 @@ import './App.css';
 import InputBox from './InputBox.js'
 import OutputBox from './OutputBox.js'
 import wordList from './valid-words.json';
-import React, {useState} from 'react';
+import React from 'react';
 class App extends React.Component{
   constructor(props) {
     super(props);
@@ -14,7 +14,6 @@ class App extends React.Component{
       resultList: "",
     }
 
-    var wordResults = [];
   }
 
 
@@ -41,7 +40,7 @@ class App extends React.Component{
     let excludeRegex = new RegExp(this.buildExcludeRegex());
     let validWords = [];
 
-    for (var word of wordList.words) {
+    for (let word of wordList.words) {
       if (maskRegex.test(word) && searchRegex.test(word) && 
       (this.state.missedChars === "" || !excludeRegex.test(word))) {
         validWords.push(word);
@@ -51,7 +50,7 @@ class App extends React.Component{
     console.log(validWords);
 
     let resString = "";
-    for (var word of validWords) {
+    for (let word of validWords) {
       resString = resString.concat(`${word}\n`);
     }
     this.setState({resultList: resString});

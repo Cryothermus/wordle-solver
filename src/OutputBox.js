@@ -3,9 +3,9 @@ import './App.css';
 import {TextField} from '@mui/material';
 
 class OutputBox extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //      super(props);
+    // }
 
     render() {
         return (

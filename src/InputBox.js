@@ -5,23 +5,21 @@ import {TextField, Grid, InputLabel, Button} from '@mui/material';
 var trueChars;
 
 //because CSS doesn't work with everything, apparently
-const styles = {
-  inputLabelStyle: {
-    color: "black"
-  }
 
-
+const props = {
+  rightChar: {
+    maxLength: 1,
+    style: {
+      textAlign: "center"
+    }
+  }, 
 }
 
 class InputBox extends React.Component {
   constructor(props) {
     super(props);
     trueChars = ['', '', '', '', ''];
-    // this.state = {
-    //   badChars: "",
-    //   missedChars: "",
-    //   rightChars: Array(5).fill(""),
-    // };
+
   }
 
   /*
@@ -108,33 +106,33 @@ class InputBox extends React.Component {
         <Grid container className="rightCharGrid" spacing={1}>
 
           <Grid item>
-          <TextField id="rightChar1" className="rightChar" inputProps={{maxLength: 1}} 
+          <TextField id="rightChar1" className="rightChar" inputProps={props.rightChar} 
         variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 0)}
         color="success">
         </TextField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar2" className="rightChar" inputProps={{maxLength: 1}} 
+          <TextField id="rightChar2" className="rightChar" inputProps={props.rightChar} 
         variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 1)}
         color="success">
         </TextField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar3" className="rightChar" inputProps={{maxLength: 1}} 
+          <TextField id="rightChar3" className="rightChar" inputProps={props.rightChar} 
         variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 2)}
         color="success"></TextField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar4" className="rightChar" inputProps={{maxLength: 1}} 
+          <TextField id="rightChar4" className="rightChar" inputProps={props.rightChar} 
         variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 3)}
         color="success"></TextField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar5" className="rightChar" inputProps={{maxLength: 1}} 
+          <TextField id="rightChar5" className="rightChar" inputProps={props.rightChar} 
         variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 4)} 
         color="success"></TextField>
           </Grid>
