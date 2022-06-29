@@ -3,9 +3,10 @@ import './App.css';
 import {TextField} from '@mui/material';
 
 class OutputBox extends React.Component {
-    // constructor(props) {
-    //      super(props);
-    // }
+    // This class is for the OutputBox that shows the resuting word list.
+    // Not sure why it's its own component, since it's just a single text field.
+    // Can't be too careful though. Might've wanted to make this something more!
+
 
     render() {
         return (

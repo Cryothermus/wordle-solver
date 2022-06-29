@@ -17,6 +17,7 @@ class App extends React.Component{
   }
 
 
+  // state-control methods
   setBadChars = (chars) => {
     this.setState({badChars: chars})
   }
@@ -29,6 +30,9 @@ class App extends React.Component{
     this.setState({rightChars: chars})
   }
 
+  // main "word searching" method.
+  // Takes the state, generates regexes, and checks each word against them.
+  // If the word matches all three, they're added to the result.
   searchWords= () => {
     
     console.log(this.buildSearchRegex());
@@ -47,7 +51,7 @@ class App extends React.Component{
       }
     }
 
-    console.log(validWords);
+    //console.log(validWords);
 
     let resString = "";
     for (let word of validWords) {
@@ -59,7 +63,7 @@ class App extends React.Component{
 
   }
 
-
+  // The MaskRegex makes sure the word matches up with the five rightChars & contains no badChars.
   buildMaskRegex = () => {
     let maskRegex = "";
     for (var i = 0; i < this.state.rightChars.length; i++) {
@@ -74,6 +78,7 @@ class App extends React.Component{
     return maskRegex;
   }
 
+  // The SearchRegex ensures at least one of each of the missedChars is present in the word.
   buildSearchRegex = () => {
     let searchRegex = ".*";
     for (var i = 0; i < this.state.missedChars.length; i++) {
@@ -86,6 +91,8 @@ class App extends React.Component{
 
   }
 
+  // The ExcludeRegex, finally, ensures that the detected missedChars aren't actually rightChars.
+  // Was a bit of a hacky solution, admittedly.
   buildExcludeRegex = () => {
     let exRegex = "";
     for (var i = 0; i < this.state.rightChars.length; i++) {
@@ -102,7 +109,7 @@ class App extends React.Component{
   }
 
 
-
+  // Render function.
   render() {
     return (
       <div className="App">
@@ -122,15 +129,5 @@ class App extends React.Component{
   }
 
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <InputBox
-//       ></InputBox>
-//       <OutputBox></OutputBox>
-//     </div>
-//   );
-// }
 
 export default App;

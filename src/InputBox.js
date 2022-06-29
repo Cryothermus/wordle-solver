@@ -4,8 +4,7 @@ import {TextField, Grid, InputLabel, Button} from '@mui/material';
 
 var trueChars;
 
-//because CSS doesn't work with everything, apparently
-
+// defines props of MUI objects.
 const props = {
   rightChar: {
     maxLength: 1,
@@ -26,9 +25,10 @@ class InputBox extends React.Component {
   Some explanation for onChangeBad & on ChangeMissed:
   The following two methods are intended to keep the InputBox's state updated,
   but they're also written to heavily limit possible user input.
-  Inputs are all uppercase, only allow alphabetical characters, and no duplicate inputs are allowed-
+  Inputs are all uppercase, only allow alphabetical characters, and no duplicate chars are allowed-
   even between the two boxes.
   */
+
   onChangeBad = (event) => {
     let badChars = event.target.value;
     badChars = badChars.toUpperCase();
@@ -42,7 +42,6 @@ class InputBox extends React.Component {
     else {
       event.target.value = badChars;
       this.props.onBadChange(event.target.value)
-      //this.setState({badChars: event.target.value});
     }
   }
 
@@ -59,13 +58,13 @@ class InputBox extends React.Component {
     else {
       event.target.value = missedChars;
       this.props.onMissedChange(event.target.value)
-      //this.setState({missedChars: event.target.value});
     }
 
   }
 
   //The "right" characters, of course, are already set in stone and exempt from the rules
   //of the above two boxes. This will take into account the possibility of duplicate characters.
+
   onChangeRight(event, num) {
     let rightChar = event.target.value;
     rightChar = rightChar.toUpperCase();
@@ -74,10 +73,23 @@ class InputBox extends React.Component {
     
     trueChars[num] = event.target.value;
     this.props.onRightChange(trueChars);
-    //this.setState({rightChars: trueChars});
 
   }
+
+  // This defines the "rightChar" input boxes, since there's five of them.
+
+  RightCharField(props) {
+    return (
+      <TextField id={props.id} className="rightChar" inputProps={props.rightChar} 
+      variant="filled" size="small" hiddenLabel onChange={props.onChangeFunc} 
+      color="success"></TextField>
+    );
+  }
   
+
+
+  // Rendering function. Big and messy, but everything is in its place.
+
   render() {
     return(
       <div className="InputBox">
@@ -106,35 +118,43 @@ class InputBox extends React.Component {
         <Grid container className="rightCharGrid" spacing={1}>
 
           <Grid item>
-          <TextField id="rightChar1" className="rightChar" inputProps={props.rightChar} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 0)}
-        color="success">
-        </TextField>
+          <this.RightCharField 
+          id="rightChar1" 
+          inputProps={props.rightChar} 
+          onChangeFunc={event => this.onChangeRight(event, 0)}>
+          </this.RightCharField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar2" className="rightChar" inputProps={props.rightChar} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 1)}
-        color="success">
-        </TextField>
+          <this.RightCharField 
+          id="rightChar2" 
+          inputProps={props.rightChar} 
+          onChangeFunc={event => this.onChangeRight(event, 1)}>
+          </this.RightCharField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar3" className="rightChar" inputProps={props.rightChar} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 2)}
-        color="success"></TextField>
+          <this.RightCharField 
+          id="rightChar3" 
+          inputProps={props.rightChar} 
+          onChangeFunc={event => this.onChangeRight(event, 2)}>
+          </this.RightCharField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar4" className="rightChar" inputProps={props.rightChar} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 3)}
-        color="success"></TextField>
+          <this.RightCharField 
+          id="rightChar4" 
+          inputProps={props.rightChar} 
+          onChangeFunc={event => this.onChangeRight(event, 3)}>
+          </this.RightCharField>
           </Grid>
 
           <Grid item>
-          <TextField id="rightChar5" className="rightChar" inputProps={props.rightChar} 
-        variant="filled" size="small" hiddenLabel onChange={event => this.onChangeRight(event, 4)} 
-        color="success"></TextField>
+          <this.RightCharField 
+          id="rightChar5" 
+          inputProps={props.rightChar} 
+          onChangeFunc={event => this.onChangeRight(event, 4)}>
+          </this.RightCharField>
           </Grid>
         </Grid>
 
