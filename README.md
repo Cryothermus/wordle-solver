@@ -1,10 +1,10 @@
 This was an idea I had a couple months ago- back when I still had classes- but never really had the time to realize until recently.
 
-Remember [Wordle](https://www.nytimes.com/games/wordle/index.html), the uber-popular word game the blew up a while back and eventually got bought out by the New York Times? This is an app I made to "help with" (completely trivialize) it.
+Remember [Wordle](https://www.nytimes.com/games/wordle/index.html), the uber-popular word game the blew up a while back and eventually got bought out by the New York Times? This is an app I made to "help with" (read: almost completely trivialize) it.
 
 You can access it at http://Cryothermus.github.io/wordle-solver
 
-It should hopefully be fairly straightforward to use- just type in the characters you have correct, the ones you have misplaced, and the ones that aren't in the answer, and you'll get a list of all possible answers that meet that criteria.
+It should hopefully be fairly straightforward to use- just type in the characters you have correct, the ones you have misplaced, and the ones that aren't in the answer, and you'll get a list of all possible answers that meet that criteria. It saves *a lot* of time that would otherwise be spent racking your brain or searching through word lists.
 
 ## Features
 
