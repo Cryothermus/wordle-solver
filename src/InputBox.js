@@ -67,6 +67,9 @@ class InputBox extends React.Component {
 
   onChangeRight(event, num) {
     let rightChar = event.target.value;
+    if (rightChar.length > 1) {
+      rightChar = rightChar.substring(0,1);
+    }
     rightChar = rightChar.toUpperCase();
     rightChar = rightChar.replace(/[^A-Z]/, '');
     event.target.value = rightChar;
