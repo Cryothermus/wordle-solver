@@ -1,5 +1,5 @@
 {
-  "homepage": "http://Cryothermus.github.io/wordle-solver",
+  "homepage": "http://Cryothermus.github.io/wordle-solver/public/",
   "name": "wordle-solver",
   "version": "1.0.1",
   "private": true,
@@ -42,6 +42,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^6.1.1"
   }
 }
